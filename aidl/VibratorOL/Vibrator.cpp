@@ -505,6 +505,11 @@ VibratorOL::VibratorOL() {
 
     mSupportVISense = is_VI_sense_supported();
 
+    if (ff.isPresent()) {
+        ledVib.mDetected = false;
+        ALOGI("InputFFDevice found, disabling LedVibratorDevice fallback");
+    }
+
     epollfd = INVALID_VALUE;
     pipefd[0] = INVALID_VALUE;
     pipefd[1] = INVALID_VALUE;
